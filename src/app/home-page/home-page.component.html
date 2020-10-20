@@ -1,0 +1,34 @@
+<div>
+  <button class="btn btn-primary" style="margin-left: 250px" [routerLink]="'/home-page'">Book Tickets</button>
+  <button class="btn btn-info" style="margin-left: 250px" [routerLink]="'/ticket-history'">View My Bookings</button>
+</div><br>
+<h3 >Search Railway Bookings</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+      <div class="form-group d-inline-block" style="margin-right: 2%">
+        <label>Departure Station</label>
+        <p-autoComplete name="arrivalStation" [(ngModel)]="trainSearch.departureStation" [suggestions]="results" (completeMethod)="search($event)" placeholder="Search Here" field="stationName" [minLength]="1"></p-autoComplete>
+      </div>
+
+      <div class="form-group d-inline-block" style="margin-right: 2%">
+        <label>Arrival Station</label>
+        <p-autoComplete name="destinationStation" [(ngModel)]="trainSearch.arrivalStation" [suggestions]="results" (completeMethod)="search($event)" placeholder="Search Here" field="stationName" [minLength]="1"></p-autoComplete>
+      </div>
+
+    <div class="form-group col-xs-6">
+      <label>No of Passengers</label>
+      <p-dropdown name="noOfPassengers" [options]="noOfPassengers" [(ngModel)]="trainSearch.noOfPassengers"></p-dropdown>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <label for="dateOfJourney">Date of Journey</label>
+      <p-calendar inputId="dateOfJourney" name="dateOfJourney" [minDate]="minDate" [(ngModel)]="trainSearch.dateOfJourney"></p-calendar>
+    </div>
+
+    <button type="submit" class="btn btn-success" style="margin-left: 140px">Submit</button>
+  </form>
+</div>
+
+
+
+

@@ -1,0 +1,106 @@
+<div *ngIf="!submitted">
+  <div *ngIf="railwayDatabaseService.noOfPassengers > 0">
+    <h3>Enter Passenger Information</h3>
+    <div style="width: 400px;">
+      <form (ngSubmit)="onSubmit()">
+        <div>Passenger 1 Information</div><br>
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <label for="firstName1">Passenger 1 First Name</label>
+            <input type="text" class="form-control" id="firstName1" required [(ngModel)]="passenger1.firstName" name="firstName1">
+          </div>
+
+          <div class="form-group col-xs-6">
+            <label style="margin-left: 20px" for="lastName1">Passenger 1 Last Name</label>
+            <input style="margin-left: 20px" type="text" class="form-control" id="lastName1" required [(ngModel)]="passenger1.lastName" name="lastName1">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <label for="emailId1">Email Address</label>
+            <input type="text" class="form-control" id="emailId1" required [(ngModel)]="passenger1.emailId" name="emailId1">
+          </div>
+
+          <div class="form-group col-xs-6">
+            <label style="margin-left: 20px" for="phoneNo1">Phone No</label>
+            <input style="margin-left: 20px" type="text" class="form-control" id="phoneNo1" required [(ngModel)]="passenger1.phoneNo" name="phoneNo1">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-xs-6">
+            <label for="gender1">Gender</label>
+            <input type="text" class="form-control" id="gender1" required [(ngModel)]="passenger1.gender" name="gender1">
+          </div>
+
+          <div class="form-group col-xs-6">
+            <label style="margin-left: 20px" for="age1">Age</label>
+            <input style="margin-left: 20px" type="text" class="form-control" id="age1" required [(ngModel)]="passenger1.age" name="age1">
+          </div>
+        </div>
+
+
+        <div *ngIf="railwayDatabaseService.noOfPassengers > 1">
+          <div>Passenger 2 Information</div><br>
+              <div class="row">
+                <div class="form-group col-xs-6">
+                  <label for="firstName2">Passenger 2 First Name</label>
+                  <input type="text" class="form-control" id="firstName2" required [(ngModel)]="passenger2.firstName" name="firstName2">
+                </div>
+
+                <div class="form-group col-xs-6">
+                  <label style="margin-left: 20px" for="lastName2">Passenger 2 Last Name</label>
+                  <input style="margin-left: 20px" type="text" class="form-control" id="lastName2" required [(ngModel)]="passenger2.lastName" name="lastName2">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-xs-6">
+                  <label for="emailId2">Email Address</label>
+                  <input type="text" class="form-control" id="emailId2" required [(ngModel)]="passenger2.emailId" name="emailId2">
+                </div>
+
+                <div class="form-group col-xs-6">
+                  <label style="margin-left: 20px" for="phoneNo2">Phone No</label>
+                  <input style="margin-left: 20px" type="text" class="form-control" id="phoneNo2" required [(ngModel)]="passenger2.phoneNo" name="phoneNo2">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-xs-6">
+                  <label for="gender2">Gender</label>
+                  <input type="text" class="form-control" id="gender2" required [(ngModel)]="passenger2.gender" name="gender2">
+                </div>
+
+                <div class="form-group col-xs-6">
+                  <label style="margin-left: 20px" for="age2">Age</label>
+                  <input style="margin-left: 20px" type="text" class="form-control" id="age2" required [(ngModel)]="passenger2.age" name="age2">
+                </div>
+              </div>
+        </div>
+
+        <button type="submit" style="margin-left: 140px" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="submitted">
+  <div>Ticket successfully created</div>
+  <h3>Ticket Information</h3>
+  <div>Ticket ID: {{ticketInformation.ticketId}}</div>
+  <div>Train No: {{ticketInformation.trainNo}}</div>
+  <div>Departure Station: {{ticketInformation.departureStation}}</div>
+  <div>Arrival Station: {{ticketInformation.arrivalStation}}</div>
+  <div>Departure Time: {{ticketInformation.departureTime}}</div>
+  <div>Arrival Time: {{ticketInformation.arrivalTime}}</div>
+  <div>Date of Booking: {{ticketInformation.dateOfBooking}}</div>
+  <div>Date of Journey: {{ticketInformation.dateOfJourney}}</div>
+  <div *ngFor="let passenger of passengerList; let i=index">
+    <div>Passenger {{i+1}} First Name: {{passenger.firstName}}</div>
+    <div>Passenger {{i+1}} Last Name: {{passenger.lastName}}</div>
+  </div>
+  <button class="btn btn-info" style="margin-left: 50px" [routerLink]="'/ticket-history'">View My Bookings</button>
+</div>

@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>My Bookings</h2>
+  </div>
+  <div *ngIf="errorDeletingBooking">Error deleting booking</div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Ticket Id</th>
+        <th>Train No</th>
+        <th>Date of Booking</th>
+        <th>Passenger 1 First Name</th>
+        <th>Passenger 1 Last Name</th>
+        <th>Passenger 2 First Name</th>
+        <th>Passenger 2 Last Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let bookingInfo of bookings">
+        <td>{{bookingInfo.ticketId}}</td>
+        <td>{{bookingInfo.trainNo}}</td>
+        <td>{{bookingInfo.dateOfBooking}}</td>
+        <td>{{bookingInfo.passengerList[0]?.firstName}}</td>
+        <td>{{bookingInfo.passengerList[0]?.lastName}}</td>
+        <td>{{bookingInfo.passengerList[1]?.firstName}}</td>
+        <td>{{bookingInfo.passengerList[1]?.lastName}}</td>
+        <td><button class="btn btn-info" (click)="cancelExistingBooking(bookingInfo.ticketId)">Cancel Booking</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

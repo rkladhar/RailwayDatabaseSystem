@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Train List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Train Name</th>
+        <th>Date of Journey</th>
+        <th>Departure Station</th>
+        <th>Arrival Station</th>
+        <th>Arrival Time</th>
+        <th>Departure Time</th>
+        <th>Available Seats</th>
+        <th>Ticket Price</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let trainInfo of trainInfos">
+        <td>{{trainInfo.trainName}}</td>
+        <td>{{trainInfo.dateOfJourney}}</td>
+        <td>{{trainInfo.departureStation}}</td>
+        <td>{{trainInfo.arrivalStation}}</td>
+        <td>{{trainInfo.arrivalTime}}</td>
+        <td>{{trainInfo.departureTime}}</td>
+        <td>{{trainInfo.availableSeats}}</td>
+        <td>{{trainInfo.ticketPrice}}</td>
+        <td><button [disabled]="trainInfo.availableSeats == 0" class="btn btn-info"
+                    (click)="goToBookingPage(trainInfo.trainNo, trainInfo.departureTime, trainInfo.arrivalTime)"
+        >Book</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

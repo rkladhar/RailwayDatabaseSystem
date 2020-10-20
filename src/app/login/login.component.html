@@ -1,0 +1,19 @@
+<h3>Login</h3>
+<div style="width: 400px;">
+  <div *ngIf="errorLoggingIn" class="error">UserName and Password do not exist</div>
+  <br *ngIf="errorLoggingIn">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">UserName</label>
+      <input type="text" class="form-control" id="userName" required [(ngModel)]="userCredentials.userName" name="userName">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" class="form-control" id="emailId" required [(ngModel)]="userCredentials.password" name="password">
+    </div>
+
+    <button type="submit" class="btn btn-success">Login</button>
+    <button class="btn btn-primary" style="margin-left: 250px" (click)="gotoCreateUserPage()">Sign Up</button>
+  </form>
+</div>
